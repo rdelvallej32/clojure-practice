@@ -1,6 +1,10 @@
-(ns hello-ring.core)
+(ns hello-ring.core
+  (:require [ring.adapter.jetty :as jetty]))
 
-(defn foo
-  "I don't do a whole lot."
-  [x]
-  (println x "Hello, World!"))
+(defn handler [request]
+  {:status 200
+    :headers {"Content-Type" "text/plain"}
+    :body "Hello Clojure, Hello Ring!"})
+
+    (defn -main []
+      (jetty/run-jetty handler {:port 3000}))
